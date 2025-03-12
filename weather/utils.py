@@ -10,12 +10,19 @@ def display_weather(weather_data):
     humidity = weather_data['main']['humidity']
     wind_speed = weather_data['wind']['speed']
 
+    # Print weather data to console (for test compatibility)
+    print(f"Weather in {city}:")
+    print(f"Temperature: {temperature}°C")
+    print(f"Description: {description}")
+    print(f"Humidity: {humidity}%")
+    print(f"Wind Speed: {wind_speed} m/s")
+
     # Create dashboard with increased spacing
     fig = make_subplots(
         rows=2, cols=2,
         specs=[[{"type": "indicator"}, {"type": "indicator"}],
                [{"type": "indicator"}, {"type": "bar"}]],
-        subplot_titles=('Temperature', 'Wind Speed', 'Humidity', 'Weather'),
+        subplot_titles=('', '', 'Humidity', 'Weather'),  # Removed "Temperature" and "Wind Speed"
         horizontal_spacing=0.1,
         vertical_spacing=0.2
     )
@@ -114,11 +121,11 @@ def display_weather(weather_data):
         dragmode='zoom'
     )
 
-    # Style subplot titles with more separation
-    for i in fig['layout']['annotations']:
-        if i['text'] in ['Temperature', 'Wind Speed', 'Humidity', 'Weather']:
-            i['font'] = dict(size=16, color="#2c3e50", family="Arial")
-            i['y'] = i['y'] + 0.15  # Move titles higher to avoid overlap
+    # Style and reposition subplot titles to avoid overlap with main title
+    for i, annotation in enumerate(fig['layout']['annotations']):
+        if annotation['text'] in ['Humidity', 'Weather']:
+            annotation['font'] = dict(size=16, color="#2c3e50", family="Arial")
+            annotation['y'] = annotation['y'] + 0.15  # Move titles higher within their subplots
 
     # Remove y-axis ticks for the weather bar graph (bottom-right subplot)
     fig.update_yaxes(
