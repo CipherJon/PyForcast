@@ -3,7 +3,7 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 
-A Python-based weather application that provides real-time weather information through OpenWeatherMap API integration.
+A Python-based weather application that provides real-time weather information for your city through OpenWeatherMap API integration.
 
 ## Features ✨
 
@@ -17,7 +17,7 @@ A Python-based weather application that provides real-time weather information t
 ## Installation 📦
 
 ```sh
-git clone https://github.com/CipherJon/weather_app.git
+git clone https://github.com/CipherJon/PyForcast
 cd weather_app
 ```
 
